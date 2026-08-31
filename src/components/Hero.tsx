@@ -100,8 +100,8 @@ export default function Hero({ entranceComplete }: HeroProps) {
         className="absolute left-1/2 top-1/2 pointer-events-none select-none whitespace-nowrap"
         style={{
           transform: "translate(-50%, calc(-50% + 50px))",
-          fontSize: "clamp(120px, 30vw, 521px)",
-          letterSpacing: "-4px",
+          fontSize: "clamp(80px, 30vw, 521px)",
+          letterSpacing: "clamp(-2px, -0.5vw, -4px)",
           textTransform: "uppercase",
           fontFamily: '"Anton SC", sans-serif',
           opacity: 0.1,

@@ -65,8 +65,8 @@ export default function Footer() {
         className="absolute left-1/2 top-0 pointer-events-none select-none whitespace-nowrap"
         style={{
           transform: "translateX(-50%)",
-          fontSize: "clamp(90px, 22vw, 380px)",
-          letterSpacing: "-4px",
+          fontSize: "clamp(60px, 22vw, 380px)",
+          letterSpacing: "clamp(-2px, -0.5vw, -4px)",
           textTransform: "uppercase",
           fontFamily: '"Anton SC", sans-serif',
           opacity: 0.05,
@@ -113,7 +113,7 @@ export default function Footer() {
           >
             <motion.button
               onClick={() => scrollToSection("#contact")}
-              className="h-14 px-8 bg-white rounded-full text-black text-[15px] inline-flex items-center gap-3 cursor-pointer font-normal"
+              className="h-14 px-6 sm:px-8 bg-white rounded-full text-black text-[15px] inline-flex items-center gap-3 cursor-pointer font-normal"
               whileHover={{ scale: 1.03, backgroundColor: "#e2e2e6" }}
               whileTap={{ scale: 0.97 }}
             >
@@ -122,7 +122,7 @@ export default function Footer() {
             </motion.button>
             <a
               href={`mailto:${config.contact.email}`}
-              className="h-14 px-8 border border-white/25 rounded-full text-white text-[15px] inline-flex items-center gap-3 hover:border-white/50 transition-colors"
+              className="h-14 px-6 sm:px-8 border border-white/25 rounded-full text-white text-[15px] inline-flex items-center gap-3 hover:border-white/50 transition-colors"
             >
               <CtaText text="Email Me" />
             </a>

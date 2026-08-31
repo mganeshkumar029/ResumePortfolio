@@ -38,7 +38,7 @@ export default function ServicesSection() {
         playsInline
       />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-28">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-20 sm:py-28">
         <motion.p
           className="text-white/40 text-[13px] sm:text-[14px] tracking-[0.2em] uppercase mb-4 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ export default function ServicesSection() {
           {SERVICES.map((s, i) => (
             <motion.div
               key={s.title}
-              className="h-64 border border-white/10 rounded-2xl bg-black/40 backdrop-blur-md p-6 flex flex-col justify-between cursor-pointer"
+              className="min-h-64 border border-white/10 rounded-2xl bg-black/40 backdrop-blur-md p-6 flex flex-col justify-between cursor-pointer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -74,7 +74,7 @@ export default function ServicesSection() {
                 <i className={`bi ${s.icon} text-[28px] text-white/80`} />
                 <h3 className="text-white text-[16px] font-normal mt-8">{s.title}</h3>
               </div>
-              <p className="text-white/40 text-[12px] sm:text-[13px] leading-relaxed">{s.desc}</p>
+              <p className="text-white/40 text-[13px] sm:text-[13px] leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>

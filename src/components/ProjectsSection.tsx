@@ -85,7 +85,7 @@ export default function ProjectsSection() {
     active === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === active);
 
   return (
-    <section id="work" className="relative min-h-screen py-28 overflow-hidden">
+    <section id="work" className="relative min-h-screen py-20 sm:py-28 overflow-hidden">
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src={VIDEO}
@@ -141,7 +141,7 @@ export default function ProjectsSection() {
               href={p.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block border border-white/10 rounded-2xl bg-black/40 backdrop-blur-md p-8 overflow-hidden"
+              className="group relative block border border-white/10 rounded-2xl bg-black/40 backdrop-blur-md p-5 sm:p-8 overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
@@ -176,7 +176,7 @@ export default function ProjectsSection() {
                     {p.tags?.map((t) => (
                       <span
                         key={t}
-                        className="px-3 py-1 border border-white/10 rounded-full text-white/60 text-[11px]"
+                        className="px-3 py-1 border border-white/10 rounded-full text-white/60 text-[12px]"
                       >
                         {t}
                       </span>

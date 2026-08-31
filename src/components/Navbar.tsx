@@ -52,7 +52,7 @@ export default function Navbar({ entranceComplete }: NavbarProps) {
 
             <motion.div
               className="h-12 rounded-[14px] bg-white/15 backdrop-blur-md flex items-center"
-              animate={{ width: open ? 360 : 48 }}
+              animate={{ width: open ? "min(360px, 40vw)" : 48 }}
               transition={spring}
               style={{ overflow: "hidden" }}
             >
@@ -76,7 +76,7 @@ export default function Navbar({ entranceComplete }: NavbarProps) {
 
               {open && (
                 <motion.nav
-                  className="flex items-center gap-5"
+                  className="flex items-center gap-3 sm:gap-5"
                   initial={{ opacity: 0, x: 15 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.1 }}
@@ -127,7 +127,7 @@ export default function Navbar({ entranceComplete }: NavbarProps) {
 
               {open && (
                 <motion.nav
-                  className="flex items-center gap-4 whitespace-nowrap"
+                  className="flex items-center gap-3 sm:gap-4"
                   initial={{ opacity: 0, x: 15 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.1 }}

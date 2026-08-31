@@ -13,10 +13,10 @@ export default function ContactSection() {
   };
 
   const field =
-    "w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white text-[14px] placeholder:text-white/35 focus:outline-none focus:border-white/40";
+    "w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white text-[16px] sm:text-[14px] placeholder:text-white/35 focus:outline-none focus:border-white/40";
 
   return (
-    <section id="contact" className="relative min-h-screen py-28 overflow-hidden">
+    <section id="contact" className="relative min-h-screen py-20 sm:py-28 overflow-hidden">
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src={VIDEO}

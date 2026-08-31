@@ -17,11 +17,11 @@ export default function CallButton() {
   }, [showBadge]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3">
+    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-3 max-sm:bottom-20">
       <AnimatePresence>
         {showBadge && (
           <motion.span
-            className="rounded-full bg-white/90 backdrop-blur-md px-4 py-2 text-[12px] tracking-[0.15em] uppercase text-black shadow-lg shadow-black/30"
+            className="rounded-full bg-white/90 backdrop-blur-md px-4 py-2 text-[12px] tracking-[0.15em] uppercase text-black shadow-lg shadow-black/30 hidden sm:inline-block"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}

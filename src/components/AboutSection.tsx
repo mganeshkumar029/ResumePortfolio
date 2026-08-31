@@ -21,7 +21,7 @@ const EXPERIENCE = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-28 overflow-hidden">
+    <section id="about" className="relative py-20 sm:py-28 overflow-hidden">
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src={VIDEO}
