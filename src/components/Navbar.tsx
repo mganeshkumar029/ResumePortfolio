@@ -4,6 +4,7 @@ import ScrambleText from "./ScrambleText";
 import SynapseXLogo from "./SynapseXLogo";
 import SquashHamburger from "./SquashHamburger";
 import config from "../lib/config";
+import { scrollToSection } from "../lib/scroll";
 
 const spring = { type: "spring", stiffness: 350, damping: 28 } as const;
 
@@ -17,10 +18,6 @@ const NAV_LINKS = [
   { text: "About", href: "#about" },
   { text: "Contact", href: "#contact" },
 ];
-
-function scrollToSection(href: string) {
-  document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-}
 
 export default function Navbar({ entranceComplete }: NavbarProps) {
   const [open, setOpen] = useState(false);

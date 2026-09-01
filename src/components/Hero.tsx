@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import ScrambleIn from "./ScrambleIn";
 import config from "../lib/config";
+import { scrollToSection } from "../lib/scroll";
 
 const HERO_VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_083515_290e5a10-0b95-41af-a5e2-32b6389baa4d.mp4";
@@ -62,7 +63,7 @@ export default function Hero({ entranceComplete }: HeroProps) {
 
   const scrollToHref = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection(href);
   };
 
   return (

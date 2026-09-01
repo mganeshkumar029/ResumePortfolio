@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import SynapseXLogo from "./SynapseXLogo";
 import ScrambleText from "./ScrambleText";
 import config from "../lib/config";
+import { scrollToSection } from "../lib/scroll";
 
 const VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_080203_fd7f4f85-3a86-4837-8192-85e7bfe68e75.mp4";
@@ -32,12 +33,12 @@ const SOCIALS = [
 
 const colHeading = "text-white/40 text-[12px] tracking-[0.2em] uppercase mb-6";
 
-function scrollToSection(href: string) {
+function scrollToFooterSection(href: string) {
   if (href === "#top") {
     window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
-  document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  scrollToSection(href);
 }
 
 export default function Footer() {
@@ -112,7 +113,7 @@ export default function Footer() {
             transition={{ duration: 0.9, delay: 0.15 }}
           >
             <motion.button
-              onClick={() => scrollToSection("#contact")}
+              onClick={() => scrollToFooterSection("#contact")}
               className="h-14 px-6 sm:px-8 bg-white rounded-full text-black text-[15px] inline-flex items-center gap-3 cursor-pointer font-normal"
               whileHover={{ scale: 1.03, backgroundColor: "#e2e2e6" }}
               whileTap={{ scale: 0.97 }}
@@ -174,7 +175,7 @@ export default function Footer() {
             <h3 className={colHeading}>Navigation</h3>
             <div className="flex flex-col items-start gap-3.5">
               {NAV_LINKS.map((l) => (
-                <LinkItem key={l.label} text={l.label} onClick={() => scrollToSection(l.href)} />
+                <LinkItem key={l.label} text={l.label} onClick={() => scrollToFooterSection(l.href)} />
               ))}
             </div>
           </motion.div>
@@ -188,7 +189,7 @@ export default function Footer() {
             <h3 className={colHeading}>Services</h3>
             <div className="flex flex-col items-start gap-3.5">
               {SERVICE_LINKS.map((s) => (
-                <LinkItem key={s} text={s} onClick={() => scrollToSection("#services")} />
+                <LinkItem key={s} text={s} onClick={() => scrollToFooterSection("#services")} />
               ))}
             </div>
           </motion.div>
@@ -224,7 +225,7 @@ export default function Footer() {
               Designed &amp; built with <span className="text-white/50">precision</span>
             </p>
             <button
-              onClick={() => scrollToSection("#top")}
+              onClick={() => scrollToFooterSection("#top")}
               className="w-10 h-10 border border-white/15 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:border-white/45 transition-colors cursor-pointer"
               aria-label="Back to top"
             >

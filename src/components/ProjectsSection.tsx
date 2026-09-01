@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import digitalMarketingPreview from "../lib/Screenshot 2026-08-30 214927.png";
 import mehandiBusinessPreview from "../lib/Screenshot 2026-08-30 215138.png";
+import docimagePreview from "../lib/image.png";
 
 const VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_095810_ecea3dd2-fc5e-4e41-8696-4219290b6589.mp4";
@@ -33,24 +34,53 @@ const PROJECTS = [
   },
   {
     num: "03",
-    title: "CareConnect Hospital",
-    type: "Healthcare Platform",
-    category: "Hospitals" as Category,
-    desc: "A modern hospital platform designed to streamline appointments, patient records, and doctor discovery, making quality healthcare accessible and simple for patients and staff alike.",
-    tags: ["Hospital", "Appointments", "Patients"],
-    link: "#",
+    title: "Demo 1",
+    type: "Dining Experience",
+    category: "Marketing" as Category,
+    desc: "A visually engaging restaurant website designed to showcase the brand, menu, signature dishes, ambience, and dining experience. With an elegant and responsive interface, the website makes it easy for customers to explore the menu, discover the restaurant, and connect for reservations or enquiries.",
+    tags: ["Restaurant", "Food & Dining", "Menu"],
+    link: "https://restaurantdemo-1.netlify.app/",
+  },
+    {
+    num: "04",
+    title: "Demo 2",
+    type: "Dining Experience",
+    category: "Marketing" as Category,
+    desc: "A visually engaging restaurant website designed to showcase the brand, menu, signature dishes, ambience, and dining experience. With an elegant and responsive interface, the website makes it easy for customers to explore the menu, discover the restaurant, and connect for reservations or enquiries.",
+    tags: ["Restaurant", "Food & Dining", "Menu"],
+    link: "https://restaurantdemo-two.netlify.app/",
+  },
+    {
+    num: "05",
+    title: "Demo 3",
+    type: "Dining Experience",
+    category: "Marketing" as Category,
+    desc: "A visually engaging restaurant website designed to showcase the brand, menu, signature dishes, ambience, and dining experience. With an elegant and responsive interface, the website makes it easy for customers to explore the menu, discover the restaurant, and connect for reservations or enquiries.",
+    tags: ["Restaurant", "Food & Dining", "Menu"],
+    link: "https://restaurantdemo-3.netlify.app/",
   },
   {
-    num: "04",
-    title: "MediCare Portal",
+    num: "06",
+    title: "Modern Healthcare & Clinic Website",
     type: "Hospital Website",
     category: "Hospitals" as Category,
-    desc: "An elegant hospital website showcasing departments, specialists, and emergency services, built to build trust and help patients find the right care quickly.",
+    desc: "A modern, patient-focused clinic website designed to establish a strong digital presence for healthcare providers. It features a clean and trustworthy interface for showcasing medical services, doctors, facilities, and clinic information, with intuitive navigation that helps patients easily find the information they need and connect with the clinic.",
     tags: ["Hospital", "Doctors", "Care"],
-    link: "#",
+    link: "https://clinicwebsitedemo-1.netlify.app/",
+    image: docimagePreview,
   },
   {
-    num: "05",
+    num: "07",
+    title: "Modern Healthcare & Clinic Website",
+    type: "Hospital Website",
+    category: "Hospitals" as Category,
+    desc: "A modern, patient-focused clinic website designed to establish a strong digital presence for healthcare providers. It features a clean and trustworthy interface for showcasing medical services, doctors, facilities, and clinic information, with intuitive navigation that helps patients easily find the information they need and connect with the clinic.",
+    tags: ["Hospital", "Doctors", "Care"],
+    link: "https://clinicwebsitedemo-1.netlify.app/",
+    image: docimagePreview,
+  },
+  {
+    num: "08",
     title: "SupportBot AI",
     type: "Chat Assistant",
     category: "Chatbot" as Category,
@@ -58,24 +88,34 @@ const PROJECTS = [
     tags: ["Chatbot", "AI", "Support"],
     link: "#",
   },
-  {
-    num: "06",
-    title: "Sales Assistant",
-    type: "AI Chatbot",
-    category: "Chatbot" as Category,
-    desc: "A conversational sales chatbot that qualifies leads, schedules calls, and guides website visitors toward the right product, turning traffic into conversions.",
-    tags: ["Chatbot", "AI", "Leads"],
-    link: "#",
-  },
+
 
   {
-    num: "07",
+    num: "09",
+    title: "EduTrack",
+    type: "Smart Education Management",
+    category: "Full Stack" as Category,
+    desc: "A modern education management platform designed to simplify and streamline academic operations. EduTrack provides a centralized solution for managing students, courses, attendance, academic records, and day-to-day educational workflows through an intuitive and user-friendly interface.",
+    tags: ["Education", "School Management", "Academic Management"],
+    link: "https://gtrack-dev.netlify.app/login",
+  },
+  {
+    num: "10",
+    title: "DineTrack",
+    type: "Smart Restaurant Management",
+    category: "Full Stack" as Category,
+    desc: "A modern restaurant management platform designed to streamline day-to-day operations and enhance the dining experience. DineTrack provides an intuitive solution for managing menus, orders, tables, customers, and restaurant workflows through a centralized digital platform.",
+    tags: ["Restaurant Management", "Food & Dining", "Business Solution"],
+    link: "https://gtrack-dev.netlify.app/login",
+  },
+  {
+    num: "11",
     title: "MediTrack",
-    type: "Full Stack Web App",
+    type: "Smart Healthcare Management",
     category: "Full Stack" as Category,
     desc: "MediTrack is a comprehensive healthcare management platform designed to digitize and streamline clinical operations. It provides an integrated solution for managing patient information, appointments, medical records, and day-to-day healthcare workflows, enabling healthcare professionals to access and manage critical information efficiently through a secure and user-friendly interface.",
-    tags: ["Full Stack", "API", "Realtime"],
-    link: "https://gtrack-dev.netlify.app/login",
+    tags: ["Healthcare", "Clinic Management", "Appointment Management"],
+    link: "#",
   },
 ];
 
