@@ -67,6 +67,7 @@ export default function Navbar({ entranceComplete }: NavbarProps) {
                 transition={spring}
                 onClick={() => setOpen((o) => !o)}
                 aria-label="Menu"
+                aria-expanded={open}
               >
                 <SquashHamburger open={open} />
               </motion.button>
@@ -79,7 +80,7 @@ export default function Navbar({ entranceComplete }: NavbarProps) {
                   transition={{ duration: 0.3, delay: 0.1 }}
                 >
                   {NAV_LINKS.map((l) => (
-                    <NavLink key={l.text} text={l.text} onClick={() => scrollToSection(l.href)} />
+                    <NavLink key={l.text} text={l.text} onClick={() => { setOpen(false); scrollToSection(l.href); }} />
                   ))}
                 </motion.nav>
               )}
@@ -118,6 +119,7 @@ export default function Navbar({ entranceComplete }: NavbarProps) {
                 transition={spring}
                 onClick={() => setOpen((o) => !o)}
                 aria-label="Menu"
+                aria-expanded={open}
               >
                 <SquashHamburger open={open} mobile />
               </motion.button>
@@ -130,7 +132,7 @@ export default function Navbar({ entranceComplete }: NavbarProps) {
                   transition={{ duration: 0.3, delay: 0.1 }}
                 >
                   {NAV_LINKS.map((l) => (
-                    <NavLink key={l.text} text={l.text} mobile onClick={() => scrollToSection(l.href)} />
+                    <NavLink key={l.text} text={l.text} mobile onClick={() => { setOpen(false); scrollToSection(l.href); }} />
                   ))}
                 </motion.nav>
               )}

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import LazyBackgroundVideo from "./LazyBackgroundVideo";
 
 const VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_095750_32a52ce0-2005-45c9-9093-41f03fde9530.mp4";
@@ -29,14 +30,7 @@ const SERVICES = [
 export default function ServicesSection() {
   return (
     <section id="services" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src={VIDEO}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+      <LazyBackgroundVideo src={VIDEO} />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-20 sm:py-28">
         <motion.p
@@ -63,7 +57,7 @@ export default function ServicesSection() {
           {SERVICES.map((s, i) => (
             <motion.div
               key={s.title}
-              className="min-h-64 border border-white/10 rounded-2xl bg-black/40 backdrop-blur-md p-6 flex flex-col justify-between cursor-pointer"
+              className="min-h-64 border border-white/10 rounded-2xl bg-black/40 backdrop-blur-md p-6 flex flex-col justify-between"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}

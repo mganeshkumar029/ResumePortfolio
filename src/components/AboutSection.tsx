@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import LazyBackgroundVideo from "./LazyBackgroundVideo";
 import config from "../lib/config";
 
 const VIDEO =
@@ -13,23 +14,10 @@ const SKILLS = [
   "Brand Identity",
 ];
 
-const EXPERIENCE = [
-  { role: "Role / Title", org: "Company or Studio Name", period: "2022 — Present", desc: "A short line about what you did and the impact you had." },
-  { role: "Role / Title", org: "Company or Studio Name", period: "2019 — 2022", desc: "A short line about what you did and the impact you had." },
-  { role: "Role / Title", org: "Company or Studio Name", period: "2017 — 2019", desc: "A short line about what you did and the impact you had." },
-];
-
 export default function AboutSection() {
   return (
     <section id="about" className="relative py-20 sm:py-28 overflow-hidden">
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src={VIDEO}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+      <LazyBackgroundVideo src={VIDEO} />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6">
         <motion.p
@@ -86,7 +74,7 @@ export default function AboutSection() {
           <div>
             <div className="text-white/40 text-[12px] tracking-[0.2em] uppercase mb-5">Experience</div>
             <div className="flex flex-col">
-              {EXPERIENCE.map((e, i) => (
+              {config.experience.map((e, i) => (
                 <motion.div
                   key={i}
                   className="border-l border-white/15 pl-6 pb-10 last:pb-0 relative"

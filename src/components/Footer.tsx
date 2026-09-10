@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import SynapseXLogo from "./SynapseXLogo";
 import ScrambleText from "./ScrambleText";
+import LazyBackgroundVideo from "./LazyBackgroundVideo";
 import config from "../lib/config";
 import { scrollToSection } from "../lib/scroll";
 
@@ -46,14 +47,7 @@ export default function Footer() {
     <footer className="relative bg-black overflow-hidden">
       {/* Background video + overlays */}
       <div className="absolute inset-0">
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src={VIDEO}
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
+        <LazyBackgroundVideo src={VIDEO} />
         <div className="absolute inset-0 bg-black/65" />
         <div
           className="absolute inset-x-0 top-0 h-40"
@@ -156,7 +150,7 @@ export default function Footer() {
                   key={s.label}
                   href={s.href}
                   target={s.href.startsWith("mailto") ? undefined : "_blank"}
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 border border-white/15 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:border-white/45 hover:bg-white/5 transition-colors"
                   aria-label={s.label}
                 >

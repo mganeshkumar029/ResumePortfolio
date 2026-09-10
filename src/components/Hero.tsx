@@ -67,7 +67,7 @@ export default function Hero({ entranceComplete }: HeroProps) {
   };
 
   return (
-    <section className="relative h-screen h-[100dvh] overflow-hidden">
+    <section className="relative h-[100dvh] overflow-hidden">
       <video
         ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
@@ -97,23 +97,25 @@ export default function Hero({ entranceComplete }: HeroProps) {
       />
 
       {/* Watermark */}
-      <div
-        className="absolute left-1/2 top-1/2 pointer-events-none select-none whitespace-nowrap"
-        style={{
-          transform: "translate(-50%, calc(-50% + 50px))",
-          fontSize: "clamp(80px, 30vw, 521px)",
-          letterSpacing: "clamp(-2px, -0.5vw, -4px)",
-          textTransform: "uppercase",
-          fontFamily: '"Anton SC", sans-serif',
-          opacity: 0.1,
-          background: "radial-gradient(circle, rgba(142,127,148,0) 0%, #8E7F94 70%)",
-          WebkitBackgroundClip: "text",
-          backgroundClip: "text",
-          color: "transparent",
-        }}
-      >
-        {config.watermark}
-      </div>
+      {config.watermark && (
+        <div
+          className="absolute left-1/2 top-1/2 pointer-events-none select-none whitespace-nowrap"
+          style={{
+            transform: "translate(-50%, calc(-50% + 50px))",
+            fontSize: "clamp(80px, 30vw, 521px)",
+            letterSpacing: "clamp(-2px, -0.5vw, -4px)",
+            textTransform: "uppercase",
+            fontFamily: '"Anton SC", sans-serif',
+            opacity: 0.1,
+            background: "radial-gradient(circle, rgba(142,127,148,0) 0%, #8E7F94 70%)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          {config.watermark}
+        </div>
+      )}
 
       <motion.div
         className="relative flex flex-col px-4 sm:px-6 md:px-8 pt-20 sm:pt-24 pb-8 sm:pb-12 h-full"

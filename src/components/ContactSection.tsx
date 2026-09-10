@@ -1,30 +1,41 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import LazyBackgroundVideo from "./LazyBackgroundVideo";
+import config from "../lib/config";
 
 const VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260622_080203_fd7f4f85-3a86-4837-8192-85e7bfe68e75.mp4";
 
-export default function ContactSection() {
-  const [sent, setSent] = useState(false);
+type FormState = "idle" | "sending" | "sent" | "error";
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export default function ContactSection() {
+  const [state, setState] = useState<FormState>("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    setState("sending");
+
+    const data = new FormData(e.currentTarget);
+    const name = data.get("name") ?? "";
+    const email = data.get("email") ?? "";
+    const message = data.get("message") ?? "";
+    const body = `New enquiry from ${name} (${email}): ${message}`;
+    const mailtoUrl = `mailto:${config.contact.email}?subject=${encodeURIComponent(`Enquiry from ${name}`)}&body=${encodeURIComponent(body)}`;
+
+    try {
+      window.location.href = mailtoUrl;
+      setState("sent");
+    } catch {
+      setState("error");
+    }
   };
 
   const field =
-    "w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white text-[16px] sm:text-[14px] placeholder:text-white/35 focus:outline-none focus:border-white/40";
+    "w-full bg-white/5 border border-white/15 rounded-lg px-4 py-3 text-white text-[16px] sm:text-[14px] placeholder:text-white/35 focus:outline-none focus:ring-2 focus:ring-white/25 focus:border-white/40 transition-colors";
 
   return (
     <section id="contact" className="relative min-h-screen py-20 sm:py-28 overflow-hidden">
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src={VIDEO}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+      <LazyBackgroundVideo src={VIDEO} />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6">
         <motion.p
@@ -54,34 +65,64 @@ export default function ContactSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
-          {sent ? (
+          {state === "sent" ? (
             <div className="flex flex-col items-center justify-center text-center py-16">
               <i className="bi bi-check2-circle text-[40px] text-white/80" />
-              <p className="text-white text-[18px] mt-5">Message sent.</p>
-              <p className="text-white/40 text-[13px] mt-2">I'll get back to you shortly.</p>
+              <p className="text-white text-[18px] mt-5">Message ready.</p>
+              <p className="text-white/40 text-[13px] mt-2">Your email client should open shortly.</p>
+              <button
+                type="button"
+                onClick={() => setState("idle")}
+                className="mt-6 text-white/50 text-[13px] underline underline-offset-4 hover:text-white transition-colors cursor-pointer"
+              >
+                Send another message
+              </button>
+            </div>
+          ) : state === "error" ? (
+            <div className="flex flex-col items-center justify-center text-center py-16">
+              <i className="bi bi-exclamation-triangle text-[40px] text-white/80" />
+              <p className="text-white text-[18px] mt-5">Something went wrong.</p>
+              <p className="text-white/40 text-[13px] mt-2">Please try again or email me directly.</p>
+              <button
+                type="button"
+                onClick={() => setState("idle")}
+                className="mt-6 text-white/50 text-[13px] underline underline-offset-4 hover:text-white transition-colors cursor-pointer"
+              >
+                Try again
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-2">
-                  <label className="text-white/50 text-[12px] tracking-[0.15em] uppercase">Name</label>
-                  <input type="text" required placeholder="Your name" className={field} />
+                  <label htmlFor="contact-name" className="text-white/50 text-[12px] tracking-[0.15em] uppercase">Name</label>
+                  <input id="contact-name" type="text" name="name" required placeholder="Your name" className={field} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-white/50 text-[12px] tracking-[0.15em] uppercase">Email</label>
-                  <input type="email" required placeholder="you@email.com" className={field} />
+                  <label htmlFor="contact-email" className="text-white/50 text-[12px] tracking-[0.15em] uppercase">Email</label>
+                  <input id="contact-email" type="email" name="email" required placeholder="you@email.com" className={field} />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-white/50 text-[12px] tracking-[0.15em] uppercase">Message</label>
-                <textarea required rows={5} placeholder="Tell me about your project" className={field} />
+                <label htmlFor="contact-message" className="text-white/50 text-[12px] tracking-[0.15em] uppercase">Message</label>
+                <textarea id="contact-message" name="message" required rows={5} placeholder="Tell me about your project" className={field} />
               </div>
               <button
                 type="submit"
-                className="h-12 px-6 bg-white rounded-full text-black text-[14px] inline-flex items-center justify-center gap-3 cursor-pointer"
+                disabled={state === "sending"}
+                className="h-12 px-6 bg-white rounded-full text-black text-[14px] inline-flex items-center justify-center gap-3 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span>Send Message</span>
-                <i className="bi bi-send" />
+                {state === "sending" ? (
+                  <>
+                    <i className="bi bi-arrow-repeat animate-spin" />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <i className="bi bi-send" />
+                  </>
+                )}
               </button>
             </form>
           )}
