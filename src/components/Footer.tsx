@@ -11,18 +11,13 @@ const VIDEO =
 
 const NAV_LINKS = [
   { label: "Home", href: "#top" },
-  { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
+  { label: "Experience", href: "#experience" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
-const SERVICE_LINKS = [
-  "Web Development",
-  "App Development",
-  "Mobile & Responsive",
-  "Performance & SEO",
-];
+const SKILL_LINKS = Object.values(config.skills).flat().slice(0, 6);
 
 const SOCIALS = [
   { label: "Email", icon: "bi-envelope", href: `mailto:${config.contact.email}` },
@@ -32,7 +27,7 @@ const SOCIALS = [
   { label: "Dribbble", icon: "bi-dribbble", href: config.contact.dribbble },
 ].filter((s) => s.href);
 
-const colHeading = "text-white/40 text-[12px] tracking-[0.2em] uppercase mb-6";
+const colHeading = "text-white/75 text-[12px] tracking-[0.2em] uppercase mb-6";
 
 function scrollToFooterSection(href: string) {
   if (href === "#top") {
@@ -78,7 +73,7 @@ export default function Footer() {
         {/* CTA */}
         <div className="px-6 sm:px-12 pt-28 pb-20 text-center">
           <motion.p
-            className="text-white/40 text-[13px] sm:text-[14px] tracking-[0.2em] uppercase mb-6"
+            className="text-white/75 text-[13px] sm:text-[14px] tracking-[0.2em] uppercase mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -143,7 +138,7 @@ export default function Footer() {
                 {config.name}
               </span>
             </div>
-            <p className="text-white/45 text-[13px] leading-relaxed mb-6">{config.tagline}</p>
+            <p className="text-white/75 text-[13px] leading-relaxed mb-6">{config.tagline}</p>
             <div className="flex gap-2.5">
               {SOCIALS.map((s) => (
                 <a
@@ -180,10 +175,10 @@ export default function Footer() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.16 }}
           >
-            <h3 className={colHeading}>Services</h3>
+            <h3 className={colHeading}>Skills</h3>
             <div className="flex flex-col items-start gap-3.5">
-              {SERVICE_LINKS.map((s) => (
-                <LinkItem key={s} text={s} onClick={() => scrollToFooterSection("#services")} />
+              {SKILL_LINKS.map((s) => (
+                <LinkItem key={s} text={s} onClick={() => scrollToFooterSection("#about")} />
               ))}
             </div>
           </motion.div>
@@ -196,13 +191,13 @@ export default function Footer() {
           >
             <h3 className={colHeading}>Contact</h3>
             <div className="flex flex-col items-start gap-4 text-[14px]">
-              <a href={`mailto:${config.contact.email}`} className="text-white/70 hover:text-white transition-colors">
+              <a href={`mailto:${config.contact.email}`} className="text-white/85 hover:text-white transition-colors">
                 {config.contact.email}
               </a>
-              <a href={`tel:${config.contact.phone}`} className="text-white/70 hover:text-white transition-colors">
+              <a href={`tel:${config.contact.phone}`} className="text-white/85 hover:text-white transition-colors">
                 {config.contact.phone}
               </a>
-              <span className="text-white/50">{config.contact.location}</span>
+              <span className="text-white/75">{config.contact.location}</span>
 
             </div>
           </motion.div>
@@ -212,10 +207,10 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto px-6 sm:px-12 pb-8">
           <div className="h-px bg-white/10 mb-6" />
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-white/25 text-[12px] text-center sm:text-left">
+            <p className="text-white/50 text-[12px] text-center sm:text-left">
               &copy; 2026 {config.name}. All rights reserved.
             </p>
-            <p className="text-white/25 text-[12px] text-center">
+            <p className="text-white/50 text-[12px] text-center">
               Designed &amp; built with <span className="text-white/50">precision</span>
             </p>
             <button
@@ -239,7 +234,7 @@ function LinkItem({ text, onClick }: { text: string; onClick: () => void }) {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="text-white/70 hover:text-white text-[14px] transition-colors cursor-pointer"
+      className="text-white/85 hover:text-white text-[14px] transition-colors cursor-pointer"
     >
       <ScrambleText text={text} isHovered={hovered} />
     </button>

@@ -13,8 +13,8 @@ interface NavbarProps {
 }
 
 const NAV_LINKS = [
-  { text: "Services", href: "#services" },
   { text: "Work", href: "#work" },
+  { text: "Experience", href: "#experience" },
   { text: "About", href: "#about" },
   { text: "Contact", href: "#contact" },
 ];

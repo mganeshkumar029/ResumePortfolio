@@ -82,7 +82,7 @@ export default function Hero({ entranceComplete }: HeroProps) {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0.15) 100%)",
+            "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.3) 100%)",
         }}
       />
 
@@ -127,24 +127,19 @@ export default function Hero({ entranceComplete }: HeroProps) {
 
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="flex flex-col gap-4 max-w-2xl">
-            <h1 className="font-light leading-[0.95] tracking-[-0.03em] text-[clamp(36px,9vw,88px)]">
-              <span style={{ color: "#A99FB2" }}>
-                <ScrambleIn text={config.name} delay={200} triggered={entranceComplete} />
-              </span>
-              <br />
-              <span style={{ color: "rgba(255,255,255,0.72)" }}>
-                <ScrambleIn text={config.role} delay={500} triggered={entranceComplete} />
-              </span>
+            <div className="text-[12px] sm:text-[13px] uppercase tracking-[0.28em] text-white/85">
+              <ScrambleIn text={config.role} delay={400} triggered={entranceComplete} />
+            </div>
+
+            <h1 className="font-light leading-[0.95] tracking-[-0.03em] text-[clamp(36px,9vw,88px)] text-white">
+              <ScrambleIn text={config.name} delay={200} triggered={entranceComplete} />
             </h1>
 
-            <motion.p
-              className="max-w-md text-[13px] sm:text-[15px] text-white/60 leading-relaxed"
-              initial={{ opacity: 0, y: 25 }}
-              animate={entranceComplete ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.9, delay: 0.2, ease: [0.215, 0.61, 0.355, 1] }}
+            <p
+              className="max-w-md text-[13px] sm:text-[15px] text-white/85 leading-relaxed"
             >
               {config.tagline}
-            </motion.p>
+            </p>
 
             <motion.div
               className="flex flex-wrap items-center gap-3"
@@ -163,7 +158,7 @@ export default function Hero({ entranceComplete }: HeroProps) {
               <a
                 href="#contact"
                 onClick={(e) => scrollToHref(e, "#contact")}
-                className="h-12 px-6 border border-white/25 rounded-full text-white inline-flex items-center gap-3 text-[14px]"
+                className="h-12 px-6 border border-white/45 rounded-full text-white inline-flex items-center gap-3 text-[14px]"
               >
                 <span>Get in Touch</span>
               </a>
@@ -171,7 +166,7 @@ export default function Hero({ entranceComplete }: HeroProps) {
           </div>
 
           <div className="hidden md:flex flex-col items-end gap-3 text-right">
-            <div className="text-white/40 text-[12px] tracking-[0.2em] uppercase">Available for</div>
+            <div className="text-white/75 text-[12px] tracking-[0.2em] uppercase">Available for</div>
             <div className="text-white text-[15px]">New Projects</div>
           </div>
         </div>

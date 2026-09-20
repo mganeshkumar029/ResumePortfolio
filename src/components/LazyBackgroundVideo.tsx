@@ -3,11 +3,13 @@ import { useEffect, useRef, useState } from "react";
 type Props = {
   src: string;
   className?: string;
+  overlay?: string;
 };
 
 export default function LazyBackgroundVideo({
   src,
   className = "absolute inset-0 w-full h-full object-cover",
+  overlay = "rgba(0,0,0,0.68)",
 }: Props) {
   const ref = useRef<HTMLVideoElement | null>(null);
   const [loaded, setLoaded] = useState(false);
@@ -34,15 +36,21 @@ export default function LazyBackgroundVideo({
   }, [loaded]);
 
   return (
-    <video
-      ref={ref}
-      className={className}
-      src={loaded ? src : undefined}
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload={loaded ? "auto" : "none"}
-    />
+    <>
+      <video
+        ref={ref}
+        className={className}
+        src={loaded ? src : undefined}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload={loaded ? "auto" : "none"}
+      />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{ background: overlay, position: "absolute" }}
+      />
+    </>
   );
 }

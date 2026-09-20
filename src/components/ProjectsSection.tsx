@@ -148,7 +148,7 @@ export default function ProjectsSection() {
               className={`relative px-5 py-2 rounded-full border text-[12px] tracking-[0.15em] uppercase transition-colors ${
                 active === c
                   ? "border-white/60 text-white"
-                  : "border-white/10 text-white/50 hover:text-white hover:border-white/30"
+                  : "border-white/10 text-white/75 hover:text-white hover:border-white/30"
               }`}
             >
               {active === c && (
@@ -183,26 +183,26 @@ export default function ProjectsSection() {
                 )}
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-10">
-                    <span className="text-white/30 text-[12px] tracking-[0.2em] uppercase">{p.num}</span>
+                    <span className="text-white/60 text-[12px] tracking-[0.2em] uppercase">{p.num}</span>
                     {hasLink ? (
-                      <i className="bi bi-arrow-up-right text-white/40 group-hover:text-white transition-colors" />
+                      <i className="bi bi-arrow-up-right text-white/70 group-hover:text-white transition-colors" />
                     ) : (
-                      <span className="text-white/30 text-[11px] tracking-[0.1em] uppercase border border-white/15 rounded-full px-2.5 py-0.5">Coming Soon</span>
+                      <span className="text-white/70 text-[11px] tracking-[0.1em] uppercase border border-white/25 rounded-full px-2.5 py-0.5">Coming Soon</span>
                     )}
                   </div>
 
-                  <div className="text-white/60 text-[12px] tracking-[0.15em] uppercase mb-2">{p.type}</div>
+                  <div className="text-white/80 text-[12px] tracking-[0.15em] uppercase mb-2">{p.type}</div>
                   <h3 className="text-white text-[22px] sm:text-[26px] font-light tracking-[-0.02em] mb-4">
                     {p.title}
                   </h3>
-                  <p className="text-white/65 text-[13px] leading-relaxed max-w-md mb-6">{p.desc}</p>
+                  <p className="text-white/85 text-[13px] leading-relaxed max-w-md mb-6">{p.desc}</p>
 
                   {(p.tags ?? []).length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {p.tags?.map((t) => (
                         <span
                           key={t}
-                          className="px-3 py-1 border border-white/10 rounded-full text-white/60 text-[12px]"
+                          className="px-3 py-1 border border-white/20 rounded-full text-white/85 text-[12px]"
                         >
                           {t}
                         </span>
